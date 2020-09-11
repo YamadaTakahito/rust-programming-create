@@ -67,6 +67,32 @@ fn chap2() {
     println!("code: {}", result4.unwrap_or(-1));
     let result5: Result<i32, String> = Err("error".to_string());
     println!("code: {}", result5.unwrap_or(-1));
+
+    let result6: Result<i32, String> = Ok(200);
+    let next_result = result6.and_then(func);
+    let result: Result<i32, String> = Err("error".to_string());
+    let next_result = result.and_then(func);
+
+    let v1 = vec![1, 2, 3, 4, 5];
+    let v2 = vec![0; 5];
+    let v = vec![1, 2, 3, 4, 5];
+    println!("{}", v[0]);
+
+    let v = vec![1, 2, 3, 4, 5];
+    for el in &v{
+        println!("{}", el);
+    }
+}
+
+fn error_handling(result: Result<i32, String>) -> Result<i32, String>{
+    let code = result?;
+    println!("code: {}", code);
+    Ok(100)
+}
+
+fn func(code: i32) -> Result<i32, String> {
+    println!("code: {}", code);
+    Ok(100)
 }
 
 struct Person {
