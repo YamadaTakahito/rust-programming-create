@@ -35,6 +35,52 @@ fn chap2() {
     a[1] = b[1];
     a[2] = b[2];
     println!("{:?}", &a[1..3]);
+
+    let p = Person{
+        name: String::from("John"),
+        age: 32,
+    };
+
+    let e1 = Event::Quit;
+    let e2 = Event::MouseDown { x: 10, y: 20 };
+
+    let result: Result<i32, String> = Ok(200);
+
+    match result {
+        Ok(code) => println!("code: {}", code),
+        Err(err) => println!("Err {}", err),
+    };
+
+    let result2: Result<i32, String> = Ok(200);
+
+    if let Ok(code) = result2 {
+        println!("code: {}", code);
+    }
+
+    let result3: Result<i32, String> = Ok(200);
+
+    if let Ok(code) = result3 {
+        println!("code: {}", code);
+    }
+
+    let result4: Result<i32, String> = Ok(200);
+    println!("code: {}", result4.unwrap_or(-1));
+    let result5: Result<i32, String> = Err("error".to_string());
+    println!("code: {}", result5.unwrap_or(-1));
+}
+
+struct Person {
+    name: String,
+    age: u32,
+}
+
+enum Event {
+    Quit,
+    KeyDown(u8),
+    MouseDown {
+        x: i32,
+        y: i32,
+    },
 }
 
 fn chap1() {
