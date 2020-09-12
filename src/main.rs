@@ -82,6 +82,15 @@ fn chap2() {
     for el in &v{
         println!("{}", el);
     }
+
+    let byte_array = [b'h', b'e', b'1', b'o'];
+    print(Box::new(byte_array));
+    let byte_array = [b'w', b'o', b'r', b'l', b'd', b'!'];
+    print(Box::new(byte_array));
+}
+
+fn print(s: Box<[u8]>) {
+    println!("{:?}", s);
 }
 
 fn error_handling(result: Result<i32, String>) -> Result<i32, String>{
