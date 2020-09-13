@@ -190,6 +190,76 @@ fn chap2() {
     for num in it {
         println!("{}", num);
     }
+
+    let x = add(1, 2);
+    println!("x = {}", x);
+
+    let p = Person2 {
+        name: String::from("Taro"),
+        age: 20,
+    };
+
+    p.say_name();
+    p.say_age();
+
+    let p = Person3 {
+        name: String::from("Taro"),
+        age: 20,
+    };
+    p.say_age().say_name();
+
+    let p = Person3::new("taro", 20);
+    p.say_name().say_age();
+}
+
+struct Person3 {
+    name: String,
+    age: u32,
+}
+
+impl Person3 {
+    fn say_name(&self) -> &Self {
+        println!("I'm {}.", self.name);
+        self
+    }
+
+    fn say_age(&self) -> &Self {
+        println!("I'm {} years old.", self.age);
+        self
+    }
+
+    fn new(name: &str, age: u32) -> Person3 {
+        Person3 {
+            name: String::from(name),
+            age: age,
+        }
+    }
+}
+
+struct Person2 {
+    name: String,
+    age: u32,
+}
+
+impl Person2 {
+    fn say_name(&self) {
+        println!("I'm {}", self.name);
+    }
+
+    fn say_age(&self) {
+        println!("I'm {} years old.", self.age);
+    }
+}
+
+fn add(a: i32, b: i32) -> i32 {
+    a + b
+}
+
+fn abs(num: i32) -> i32 {
+    if num < 0 {
+        return -num;
+    }
+    num
 }
 
 struct Iter {
