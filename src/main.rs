@@ -1,3 +1,5 @@
+use std::io::Write;
+
 fn main() {
     println!("Hello, world!");
 
@@ -210,6 +212,33 @@ fn chap2() {
 
     let p = Person3::new("taro", 20);
     p.say_name().say_age();
+
+    let s = "Ab23";
+    let s = format!("{}-{:?}", s, ("D", 5));
+    println!("{}", s);
+    let s = format!("{}{}", "abc", "def");
+    println!("{}", s);
+    let s = concat!("A", "b2", 3);
+    println!("{}", s);
+
+    print!("hello");
+    println!("hello {}", "world");
+    eprint!("hello {}", "error");
+    eprintln!("heelo");
+
+    let mut w = Vec::new();
+    write!(&mut w, "{}", "ABC");
+    writeln!(&mut w, " is 123");
+    dbg!(w);
+
+    // panic!("it will panic");
+
+    let v = vec![1, 2, 3];
+
+    println!("defined in file: {}", file!());
+    println!("defined on line: {}", line!());
+    println!("is test: {}", cfg!(unix));
+    println!("CARGO_HOME: {}", env!("CARGO_HOME"));
 }
 
 struct Person3 {
